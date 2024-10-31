@@ -33,15 +33,25 @@ services:
     networks:
       - otel-network
 
+  grafana:
+    container_name: grafana
+    image: grafana/grafana:10.2.2
+    ports:
+      - '3000:3000'
+    networks:
+      - otel-network
+
   poc-app:
     container_name: poc-app
     build:
       context: .
       dockerfile: Dockerfile
     environment:
-      PORT: 3000
+      PORT: 3001
     ports:
-      - '3000:3000'
+      - '3001:3001'
+    networks:
+      - otel-network
 
 networks:
   otel-network:

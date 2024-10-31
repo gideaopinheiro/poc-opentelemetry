@@ -1,6 +1,8 @@
+# Permite setar configurações globais
 global:
-  scrape_interval: 10s
+  scrape_interval: 10s # Com essa configuração o prometheus vai buscar os dados a cada 10s
 
+# Configurações do "scraper"
 scrape_configs:
   - job_name: 'otel-collector'
     static_configs:

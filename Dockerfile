@@ -18,11 +18,12 @@ FROM node:22 AS prod
 WORKDIR /usr/app
 
 COPY --from=build /usr/app/dist ./dist
-
+COPY --from=build /usr/app/src ./src
+COPY --from=build /usr/app/tsconfig*.json ./
 COPY --from=build /usr/app/package*.json ./
 COPY --from=build /usr/app/node_modules node_modules
 
 EXPOSE 3000
 
-CMD ["npm", "run", "prod"]
+CMD ["npm", "start"]
 
